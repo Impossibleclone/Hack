@@ -1,0 +1,104 @@
+5......................
+
+// Tower of Hanoi program in C using Recursion
+#include <stdio.h>
+void toH(int n, char rodA, char rodC, char rodB)
+{
+if (n == 1)
+{
+printf("\n Move disk 1 from rod %c to rod %c",rodA ,rodC );
+return;
+}
+toH(n-1, rodA, rodB, rodC);
+printf("\n Move disk %d from rod %c to rod %c", n, rodA, rodC);
+toH(n-1, rodB, rodC,rodA);
+}
+int main()
+{
+int no_of_disks ;
+printf("Enter number of disks: ");
+scanf("%d", &no_of_disks);
+toH(no_of_disks, 'A','C','B');
+return 0;
+}
+
+6..................
+
+//Program to implement Binary Search
+#include <stdio.h> 
+int main ()
+{
+int c, beg, end, middle, n, item, array[100];
+printf("Enter number of elements\n");
+scanf("%d", &n);
+printf("Enter %d integers\n", n);
+for (c = 0; c < n; c++){ 
+	scanf("%d", &array[c]);}
+printf("Enter item to find\n"); 
+scanf("%d", &item);
+beg = 0; 
+end = n - 1;
+middle = (beg+end)/2;
+while (beg <= end) {
+if (array[middle] < item) 
+{beg = middle + 1;}
+else if (array[middle] == item) {
+printf("%d found at location %d.\n", item, middle+1); break;
+}
+else
+end = middle - 1;
+middle = (beg + end)/2;
+}
+if (beg > end)
+printf("Not found! %d isn't present in the list.\n", item);
+return 0;
+}
+
+7........................
+
+#include <stdio.h>
+// Recursive function to print multiplication table
+void printTable(int num, int start, int end) {
+// Print the multiplication result
+printf("%d x %d = %d\n", num, start, num * start);
+// Recursive calls
+if (start > end) // Decreasing order
+printTable(num, start - 1, end);
+else if (start < end) // Increasing order
+printTable(num, start + 1, end);
+}
+int main() {
+int num, start, end;
+// Taking user input
+printf("Enter a number: ");
+scanf("%d", &num);
+printf("Enter the start of the table: ");
+scanf("%d", &start);
+printf("Enter the end of the table: ");
+scanf("%d", &end);
+// Function call
+printTable(num, start, end);
+return 0;
+}
+
+8....................
+
+// Program to implement Insertion Sort
+#include<stdio.h>
+#include<conio.h> 
+void main(){
+int i,j,n,temp,a[20]; 
+clrscr();
+printf("Enter total elements: "); scanf("%d",&n);
+printf("Enter %d elements: ",n); for(i=0;i<n;i++) scanf("%d",&a[i]);
+for(i=1;i<n;i++)
+{
+temp=a[i]; j=i-1;
+while((temp<a[j])&&(j>=0))
+{
+a[j+1]=a[j]; j=j-1;
+}
+a[j+1]=temp;
+}
+printf("After sorting: "); for(i=0;i<n;i++) printf(" %d",a[i]); getch();
+}
